@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
 import SafeAreaViewAndroid from '../components/SafeAreaViewAndroid' // to get SafeAreaView working on Android, must use StyleSheet
 import React from 'react'
 import Header from '../components/Home/Header'
+import Stories from '../components/Home/Stories'
 // when importing componenets, do not import them as JSX objects.
 // import { SafeAreaView } from 'react-native-web'
 
@@ -11,6 +12,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={[SafeAreaViewAndroid.AndroidSafeArea, styles.container]}> 
         <Header/>
+        <Stories/>
     </SafeAreaView>
   )
 }
