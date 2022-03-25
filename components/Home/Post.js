@@ -12,12 +12,14 @@ const Post = ({post}) => {
         <Divider width={1} orientation='vertical'/>
 
         <PostHeader post={post} />
+        <PostImage post={post} />
 
       <Text style={{color:'white'}}>Post</Text>
     </View>
   )
 }
 
+// PostHeader component, could export this as a sepearte js file
 const PostHeader = ({post}) => (
     <View style={{
         flexDirection:'row',
@@ -36,6 +38,17 @@ const PostHeader = ({post}) => (
 
     </View>
 )
+
+const PostImage = ({post}) => {
+    <View style={{width:'100%',height:450}}>
+        <Image 
+            source={{uri:post.imageUrl}} 
+            style={{height:'100%',resizeMode:'cover'}}
+        />
+    </View>
+}
+
+
 
 
 // DONE AT 46:52
