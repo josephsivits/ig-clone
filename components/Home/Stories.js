@@ -24,8 +24,6 @@ const Stories = () => {
 
       </ScrollView>
 
-      <Text style={{color:'white'}}>STORIES</Text>
-
     </View>
   )
 }
