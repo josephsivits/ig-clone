@@ -1,15 +1,15 @@
-import { View, Text,Image, } from 'react-native' //package name 'react-native'
+import { View, Text,Image,StyleSheet, TouchableOpacity } from 'react-native' //package name 'react-native'
 import React from 'react'
 import {Divider} from 'react-native-elements' // after doing the npm install react-native-elements
-import { TouchableOpacity } from 'react-native-web'
 import { MaterialCommunityIcons } from '@expo/vector-icons' // MaterialCommunityIcons are friends not food
+import { Ionicons } from '@expo/vector-icons'; 
 //import Icon from '@material-ui/core/Icon'; // to use for 
 
 
 // yarn add react-native-elements
 // npm install react-native-elements
 
-/*
+/* Components for Footer
 MaterialCommunityIcons list for the footer (will be updated later)
 Like   :   <MaterialCommunityIcons name="heart-outline" color='white' size={24}/>
 Like(d)   :   <MaterialCommunityIcons name="heart-outline" color='red' size={24}/>
@@ -19,16 +19,6 @@ Bookmark:   <MaterialCommunityIcons name="bookmark-outline" color='white' size={
 */
 
 // 1:18:32
-/*
-const postFooterIcons = [
-    {
-        name: 'Like',
-        image: 'heart-outline',
-        color: 'white'
-    }
-]
-*/
-
 
 // takes in a post then is handled
 const Post = ({post}) => {
@@ -37,13 +27,15 @@ const Post = ({post}) => {
         <Divider width={1} orientation='vertical'/>
 
         <PostHeader post={post} />
+       
         <PostImage post={post} />
-
+   
         <View style={{marginHorizontal:15,marginTop:10}}>
             <PostFooter />
+            <Likes post={post} />
+            <Caption post={post} />
         </View>
-
-      <Text style={{color:'white'}}>Post</Text>
+     {/*} for some reason i had to re-build it, it's working now idk why {*/}
     </View>
   )
 }
@@ -57,8 +49,8 @@ const PostHeader = ({post}) => (
         alignItems:'center',
     }}>
         <View style={{flexDirection:'row',alignItems:'center'}}>
-            <Image source={{uri:post.profile_picture}} style={style.story}/>
-            <Text style={{color:'white', marginLeft:5, fontWeight:700}}>
+            <Image source={{uri:post.profile_picture}} style={styles.story}/>
+            <Text style={{color:'white', marginLeft:5, fontWeight:'700'}}>
                 {post.user}
             </Text>
         </View>
@@ -68,35 +60,52 @@ const PostHeader = ({post}) => (
     </View>
 )
 
-const PostImage = ({post}) => {
+const PostImage = ({post}) => (
     <View style={{width:'100%',height:450}}>
         <Image 
             source={{uri:post.imageUrl}} 
             style={{height:'100%',resizeMode:'cover'}}
         />
     </View>
-}
+)
 
 //1:16:31 look for importing icon
-const PostFooter = () => {
+const PostFooter = () => (
     <View style={{flexDirection:'row', justifyContent:'space-between'}}>
         <View style={styles.leftFooterIconsContainer}>
-            <Icon imgStyle={styles.footerIcon} iconName={'heart-outline'} iconColor={'white'} />
-            <Icon imgStyle={styles.footerIcon} iconName={'chatbubble-outline'} iconColor={'white'} />
-            <Icon imgStyle={styles.footerIcon} iconName={'message-arrow-right-outline'} iconColor={'white'} />
+        {/*} This is really ugly, refactoring migh tbe worthwhile to write cleaner code{*/}
+                <TouchableOpacity>
+                    <MaterialCommunityIcons name="heart-outline" color='white' size={24}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Ionicons name="chatbubble-outline" size={24} color="white" />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <MaterialCommunityIcons name="message-arrow-right-outline" color='white' size={24}/> 
+                </TouchableOpacity>
         </View>
 
         <View>
-            <Icon imgStyle={styles.footerIcon} iconName={'bookmark-outline'} iconColor={'white'} />
+            <MaterialCommunityIcons name="bookmark-outline" color='white' size={24}/>     
         </View>
     </View>
-}
+)
 
-// might be able to avoid imgUrl and just go straigt to imgStyle
-const Icon = ({imgStyle ,iconName, iconColor}) => (
-    <TouchableOpacity>
-        <MaterialCommunityIcons style={imgStyle} name={iconName} color={iconColor} />
-    </TouchableOpacity>
+const Likes = ({post}) => (
+    <View style={{flexDirection:'row',marginTop:4}}>
+    <Text style={{color:'white', fontWeight:'700'}}>{post.likes.toLocaleString('en')} likes</Text>
+    </View>
+)
+
+// 1:35:56
+const Caption = ({post}) => (
+    <View style={{marginTop:5}}>
+        <Text style={{color:'white'}}>
+        {/*} CAN'T GET BOLD USERNAME TO WORK... LOOK INTO {*/}
+            <Text style={{fontWeight:'900'}}>{post.user}</Text>
+            <Text>{'  '}{post.caption}</Text>
+        </Text>
+    </View>
 )
 
 // DONE AT 46:52
