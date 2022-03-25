@@ -17,7 +17,7 @@ const Header = () => {
                 <MaterialCommunityIcons name="plus-box" color='white' size={24}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.icon}>
-                <MaterialCommunityIcons name="heart-box-outline" color='white' size={24}/>
+                <MaterialCommunityIcons name="heart-multiple-outline" color='white' size={24}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.icon}>
                 <View style={styles.unreadBadge}>
