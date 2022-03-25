@@ -3,16 +3,25 @@ import SafeAreaViewAndroid from '../components/SafeAreaViewAndroid' // to get Sa
 import React from 'react'
 import Header from '../components/Home/Header'
 import Stories from '../components/Home/Stories'
+import Post from '../components/Home/Post'
+import { ScrollView } from 'react-native-web'
 // when importing componenets, do not import them as JSX objects.
 // import { SafeAreaView } from 'react-native-web'
 
 
 // you can use more than on estyle using an array!
+// for posts, you can have more than on epost in a loop
 const HomeScreen = () => {
   return (
     <SafeAreaView style={[SafeAreaViewAndroid.AndroidSafeArea, styles.container]}> 
         <Header/>
         <Stories/>
+        <ScrollView> 
+            {POSTS.map((post,index)=>(
+                <Post post={post} key={index}/> //HAVE NOT YET IMPLEMENTED THE POSTS
+            ))}
+        </ScrollView>
+
     </SafeAreaView>
   )
 }
