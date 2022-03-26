@@ -34,6 +34,8 @@ const Post = ({post}) => {
             <PostFooter />
             <Likes post={post} />
             <Caption post={post} />
+            <CommentSection post={post} />
+            <Comments post={post}/>
         </View>
      {/*} for some reason i had to re-build it, it's working now idk why {*/}
     </View>
@@ -106,6 +108,34 @@ const Caption = ({post}) => (
             <Text>{'  '}{post.caption}</Text>
         </Text>
     </View>
+)
+
+// 1:42:09 
+const CommentSection = ({post}) => (
+    <View style={{marginTop:5}}>
+    {/*}CONDITIONAL RENDER, double negation convertes to primitive Boolean Value{*/}
+    {!!post.comments.length && (
+        <Text style={{color: 'gray'}}>
+            View{post.comments.length > 1 ? ' all': ''} {post.comments.length}
+            {post.comments.length > 1 ? ' comments' : ' comments' }
+        </Text>
+    )}
+    </View>
+)
+
+const Comments = ({post}) => (
+    // Fragment
+    <> 
+        {post.comments.map((comment, index) => (
+            <View key={index} style={{flexDirection:'row', marginTop:'5'}}>
+                <Text style={{color:'white'}}>
+                    <Text style={{fontWeight:'600'}}>{comment.user}{'  '}</Text>
+                    {/*} REALLY BAD SYNTAX INCOMING{*/}
+                    {comment.comment}
+                </Text>
+            </View>
+        ))}
+    </>   
 )
 
 // DONE AT 46:52

@@ -9,14 +9,7 @@ export const POSTS = [
         caption:'Feeling Spooky!',
         profile_picture: USERS[0].image,
         comments: [
-            {
-                user: USERS[3].user,
-                comment: 'omg this is so spooky!!',
-            },
-            {
-                user: USERS[4].user,
-                comment: 'plumpkin ;)',
-            },
+            // No comments
         ],
     },
     {
@@ -30,10 +23,7 @@ export const POSTS = [
                 user: USERS[1].user,
                 comment: 'me too bestie',
             },
-            {
-                user: USERS[0].user,
-                comment: 'did you take this??😍',
-            },
+            // 1 comment
         ],
     },
     {
@@ -43,6 +33,7 @@ export const POSTS = [
         caption:'Digital Design is my Passion.',
         profile_picture: USERS[6].image,
         comments: [
+            // 2 comments
             {
                 user: USERS[2].user,
                 comment: 'Very cool!',
