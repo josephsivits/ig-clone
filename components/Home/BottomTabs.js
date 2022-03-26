@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import { View, Image,TouchableOpacity,StyleSheet } from 'react-native'
 import {Divider} from 'react-native-elements'
 
-//2:00:24
 // active and unactive (filled and unfilled)
 export const bottomTabIcons = [
     {
