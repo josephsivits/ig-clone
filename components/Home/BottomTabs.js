@@ -1,57 +1,96 @@
-import { View, Text,Image,ToucahbleOpacity } from 'react-native'
+
 import React, {useState} from 'react'
+import { View, Image,TouchableOpacity,StyleSheet } from 'react-native'
 import {Divider} from 'react-native-elements'
 
-
 //2:00:24
-// Time to add the icons
 // active and unactive (filled and unfilled)
 export const bottomTabIcons = [
     {
-        name:'Home',
-        active: 'https://img.icons8.com/fluency-systems-filled/144/ffffff/home',
-        inactive: 'https://img.icons8.com/fluency-systems-regular/144/ffffff/home',
-    },
-    {   
-        name:'Search',
-        active: 'https://img.icons8.com/ios-filled/344/ffffff/search--v1.png',
-        inactive: 'https://img.icons8.com/fluency-systems-regular/344/ffffff/search--v1.png',
+      name: 'Home',
+      active: require('../../assets/home-on.png'),
+      inactive: require('../../assets/home-off.png')
     },
     {
-        name: 'Reels',
-        active: 'https://img.icons8.com/ios-filled/452/ffffff/instagram-reel.png',
-        inactive: 'https://img.icons8.com/ios/452/ffffff/instagram-reel.png',
+      name: 'Search',
+      active: require('../../assets/search-on.png'),
+      inactive: require('../../assets/search-off.png')
     },
     {
-        name: 'Shop',
-        active: 'https://img.icons8.com/ios-glyphs/452/ffffff/shopping-bag-full.png',
-        inactive: 'https://img.icons8.com/windows/452/ffffff/shopping-bag-full.png',
+      name: 'Reel',
+      active: require('../../assets/reel-on.png'),
+      inactive: require('../../assets/reel-off.png')
     },
     {
-        name: 'Profile',
-        active: 'https://img.icons8.com/fluency-systems-filled/452/ffffff/user.png',
-        inactive: 'https://img.icons8.com/fluency-systems-regular/452/ffffff/user.png',
+      name: 'Shopping',
+      active: require('../../assets/shopping-on.png'),
+      inactive: require('../../assets/shopping-off.png')
+    },
+    {
+      name: 'Profile',
+      active: require('../../assets/profile-on.png'),
+      inactive: require('../../assets/profile-off.png')
     }
+  ]
 
-]
+// stuck at 2:04:02
+// Error: Text strings must be rendered within a <Text> component.
+/*
+    Error: Element type is invalid: expected a string (for built-in components)
+     or a class/function (for composite components) but got: undefined. 
+     You likely forgot to export your component from the file it's defined in, 
+    or you might have mixed up default and named imports.
 
-const BottomTabs = ({icons}) => {
+    Check the render method of `Icon`.
+*/
+const BottomTabs = ({ icons }) => {
 
     // set the default tab to be home
     const [activeTab, setActiveTab] = useState('Home')
 
     // making the icon componenets
-    const Icon = ({icon}) => (
-        <ToucahbleOpacity onPress={() => setActiveTab({icon.name})} >
-            <Image />
-        </ToucahbleOpacity>
-    )
+    const Icon = ({ icon }) => {
+        var currIcon = (activeTab === icon.name) ? icon.active : icon.inactive
+        return (
+          <TouchableOpacity onPress={() => setActiveTab(icon.name)}>
+            <Image source={currIcon} style={styles.icon} />
+          </TouchableOpacity>
+        )
+      }
+    
 
   return (
-    <View>
-      <Text>BottomTabs</Text>
+      <View>
+      <Divider width={1} orientation='vertical' color='gray' />
+            <View style={styles.container}>
+                {icons.map((icon,index) => (   
+                    <Icon key={index} icon={icon} /> 
+                ))}   
+            </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    wrapper: {
+      position: 'absolute',
+      width: '100%',
+      bottom: '3%',
+      zIndex: 999,
+      backgroundColor: '#000'
+    },
+    container: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      height: 50,
+      paddingTop: 10
+    },
+    icon: {
+      width: 25,
+      height: 25,
+      resizeMode: 'cover'
+    }
+    // he added a profile picture.
+  })
 
 export default BottomTabs
