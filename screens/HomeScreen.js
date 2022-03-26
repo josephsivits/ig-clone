@@ -6,6 +6,7 @@ import Stories from '../components/Home/Stories'
 import Post from '../components/Home/Post'
 //import { ScrollView } from 'react-native-web'
 import { POSTS } from '../data/posts'
+import BottomTabs from '../components/Home/BottomTabs'
 // when importing componenets, do not import them as JSX objects.
 // import { SafeAreaView } from 'react-native-web'
 
@@ -24,8 +25,7 @@ const HomeScreen = () => {
             ))}
       
         </ScrollView>
-       
-
+       <BottomTabs icons={bottomTabIcons}/>
     </SafeAreaView>
   )
 }
