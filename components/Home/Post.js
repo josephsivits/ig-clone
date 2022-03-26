@@ -122,12 +122,12 @@ const CommentSection = ({post}) => (
     )}
     </View>
 )
-
+//1:52:14 
 const Comments = ({post}) => (
-    // Fragment
+    // Fragments
     <> 
         {post.comments.map((comment, index) => (
-            <View key={index} style={{flexDirection:'row', marginTop:'5'}}>
+            <View key={index} style={{flexDirection:'row', marginTop:5}}>
                 <Text style={{color:'white'}}>
                     <Text style={{fontWeight:'600'}}>{comment.user}{'  '}</Text>
                     {/*} REALLY BAD SYNTAX INCOMING{*/}
