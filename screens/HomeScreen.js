@@ -14,10 +14,10 @@ import BottomTabs,{ bottomTabIcons }  from '../components/home/BottomTabs'
 
 // you can use more than on estyle using an array!
 // for posts, you can have more than on epost in a loop
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={[SafeAreaViewAndroid.AndroidSafeArea, styles.container]}> 
-        <Header />
+        <Header navigation={navigation}/>
         <Stories />
         
         <ScrollView> 

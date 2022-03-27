@@ -3,14 +3,15 @@ import React from 'react'
 import SafeAreaViewAndroid from '../components/SafeAreaViewAndroid'
 import AddNewPost from '../components/newPost/AddNewPost'
 
-const NewPostScreen = () => {
+const NewPostScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={[SafeAreaViewAndroid.AndroidSafeArea, styles.container]}> 
-        <AddNewPost />
+    <SafeAreaView style={{ backgroundColor: 'black', flex: 1 }}>
+      <AddNewPost navigation={navigation} />
     </SafeAreaView>
   )
 }
 
+export default NewPostScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -18,5 +19,3 @@ const styles = StyleSheet.create({
         flex: 1,
     }
 })
-
-export default NewPostScreen
