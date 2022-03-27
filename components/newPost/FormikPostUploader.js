@@ -16,13 +16,16 @@ const uploadPostSchema = Yup.object().shape({
   
  const PLACEHOLD_IMG = require('../../assets/newPostImg.png')
 
-const FormikPostUploader = () => {
+const FormikPostUploader = ({navigation}) => {
     const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLD_IMG)
 
   return (
     <Formik
     initialValues={{ caption: '', imageUrl: ''}}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => {
+      console.log(values)
+      navigation.goBack()
+      }}
     validationSchema={uploadPostSchema}
     >
         {({ handleBlur, handleChange, handleSubmit, values, errors, isValid}) => (

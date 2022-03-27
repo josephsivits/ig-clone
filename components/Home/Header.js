@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons' // MaterialCommunityIcons are friends not food
 
-const Header = () => {
+const Header = ({navigation}) => {
   return (
     <View style={styles.container}>
         <TouchableOpacity>
@@ -13,7 +13,7 @@ const Header = () => {
         </TouchableOpacity>
 
         <View style={styles.iconsContainer}>
-            <TouchableOpacity style={styles.icon}>
+            <TouchableOpacity onPress={() => navigation.push('NewPostScreen')} style={styles.icon}>
                 <MaterialCommunityIcons name="plus-box" color='white' size={24}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.icon}>
