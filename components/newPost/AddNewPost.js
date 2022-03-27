@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import FormikPostUploader from './FormikPostUploader'
 
 const AddNewPost = () => (
     <View style={styles.container}>
         <Header />
+        <FormikPostUploader />
     </View>
 )
 /*
