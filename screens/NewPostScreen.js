@@ -3,6 +3,8 @@ import React from 'react'
 import SafeAreaViewAndroid from '../components/SafeAreaViewAndroid'
 import AddNewPost from '../components/newPost/AddNewPost'
 
+
+// 3:05:03
 const NewPostScreen = ({navigation}) => {
   return (
     <SafeAreaView style={[SafeAreaViewAndroid.AndroidSafeArea, styles.container]}> 

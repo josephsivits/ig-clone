@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { Divider } from 'react-native-elements'
+import validUrl from 'valid-url'
 
 // Needed to install yup and formik
 
@@ -24,6 +25,7 @@ const FormikPostUploader = ({navigation}) => {
     initialValues={{ caption: '', imageUrl: ''}}
     onSubmit={(values) => {
       console.log(values)
+      console.log('Your post has been submitted successfully!!')
       navigation.goBack()
       }}
     validationSchema={uploadPostSchema}
@@ -31,9 +33,10 @@ const FormikPostUploader = ({navigation}) => {
         {({ handleBlur, handleChange, handleSubmit, values, errors, isValid}) => (
             <>
         <View style={{ flexDirection: 'row', alignItems: 'flex-start', height: 100}}>
-          <Image 
-          source={{PLACEHOLD_IMG}}
-          style={styles.thumbnail}/>
+        <Image 
+        source={validUrl.isUri(thumbnailUrl?.uri) ? thumbnailUrl : PLACEHOLD_IMG}
+         style={styles.thumbnail}
+         />
           <TextInput 
             placeholder='Write a caption...' 
             placeholderTextColor='grey' 
